@@ -1,0 +1,26 @@
+name: Docker Publish Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+
+  build-push:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag leahkorol/final-python:latest
+
+    - name: Login to docker hub
+      run: docker login -u leahkorol -p ${{secrets.DOCKERHUB_TOKEN}}
+
+    - name: Push the Docker image
+      run: docker push leahkorol/final-python:latest
