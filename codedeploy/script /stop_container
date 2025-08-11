@@ -1,3 +1,0 @@
-#!/bin/bash
-sudo docker stop final-python-app
-sudo docker rm final-python-app
