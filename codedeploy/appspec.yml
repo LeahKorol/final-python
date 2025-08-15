@@ -3,13 +3,13 @@ os: linux
 files:
 hooks:
   BeforeInstall:
-    - location: scripts/install_dependencies
+    - location: script/install_dependencies
       timeout: 300
       runas: root
-    - location: scripts/run_container
+    - location: script/run_container
       timeout: 300
       runas: root
   ApplicationStop:
-    - location: scripts/stop_container
+    - location: script/stop_container
       timeout: 300
       runas: root
